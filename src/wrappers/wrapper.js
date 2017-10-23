@@ -8,6 +8,7 @@ import VueWrapper from './vue-wrapper'
 import WrapperArray from './wrapper-array'
 import ErrorWrapper from './error-wrapper'
 import { throwError } from '../lib/util'
+import { debugNode } from '../lib/debug'
 
 export default class Wrapper implements BaseWrapper {
   vnode: VNode;
@@ -446,5 +447,12 @@ export default class Wrapper implements BaseWrapper {
 
     this.element.dispatchEvent(eventObject)
     this.update()
+  }
+
+  /**
+   *  show HTML for debug
+   */
+  debug () {
+    return debugNode(this.vnode, 0)
   }
 }
